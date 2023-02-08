@@ -33,8 +33,13 @@ export default function Player() {
     }
 
     useEffect(() => {
+        if (audioElem.current.networkState === 2) {
+            setLoading(true);
+        } else {
+            setLoading(false);
+        }
+        
         const checkLoad = setInterval(() => {
-            console.log('interval');
             if (audioElem.current.networkState === 2) {
                 setLoading(true);
             } else {
@@ -63,7 +68,7 @@ export default function Player() {
 
         if (!isNaN(time) && time !== Infinity) {
             setProgress(time);
-        } else {
+        } else if (time === Infinity) {
             setProgress(100);
         }
 
