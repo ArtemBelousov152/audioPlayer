@@ -63,6 +63,8 @@ export default function Player() {
 
         if (!isNaN(time) && time !== Infinity) {
             setProgress(time);
+        } else {
+            setProgress(100);
         }
 
 
