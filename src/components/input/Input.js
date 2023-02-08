@@ -20,23 +20,22 @@ export default function Input() {
 
     useEffect(() => {
         if (value.slice(0, 8) !== 'https://') {
-            setError(true)
+            setError(true);
         } else {
-            setError(false)
+            setError(false);
         }
-    },[value])
+    },[value]);
 
     const setLink = () => {
         if (!error) {
             dispatch(addSong(value));
-            navigate('/player')
+            navigate('/player');
         }
-        
     }
 
     const inputClass = classNames({
         'input__border': error
-    })
+    });
 
     return (
         <div className="input">

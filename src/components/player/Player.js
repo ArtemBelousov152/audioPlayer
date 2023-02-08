@@ -1,15 +1,16 @@
-import play from '../../assets/play.svg';
-import pause from '../../assets/pause.svg';
-import smallArrow from '../../assets/smallArrow.svg';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { playerSlice } from '../../store/reducers/playerSlice';
 import { timeFormat } from '../../utils/timeFormat';
 import Slider from '@mui/material/Slider';
+import classNames from 'classnames';
+
+import play from '../../assets/play.svg';
+import pause from '../../assets/pause.svg';
+import smallArrow from '../../assets/smallArrow.svg';
 
 import './player.scss';
-import classNames from 'classnames';
 
 export default function Player() {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -41,12 +42,12 @@ export default function Player() {
             }
         }, 2000);
 
-        return () => clearInterval(checkLoad)
-    }, [])
+        return () => clearInterval(checkLoad);
+    }, []);
 
     useEffect(() => {
         audioElem.current.volume = volume / 100;
-    }, [volume])
+    }, [volume]);
 
     useEffect(() => {
         if (isPlaying) {
@@ -75,11 +76,6 @@ export default function Player() {
 
                 return timeFormat(+state + 1);
             })
-        }
-
-
-        if (seconds === 60) {
-
         }
 
 
