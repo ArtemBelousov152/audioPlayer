@@ -38,7 +38,7 @@ export default function Player() {
         } else {
             setLoading(false);
         }
-        
+
         const checkLoad = setInterval(() => {
             if (audioElem.current.networkState === 2) {
                 setLoading(true);
@@ -92,8 +92,6 @@ export default function Player() {
             setDuration(audioElem.current.duration);
         }
     }
-
-
 
     const changeVolume = (event, value) => {
         setVolume(value);
