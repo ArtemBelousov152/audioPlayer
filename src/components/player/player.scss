@@ -1,0 +1,155 @@
+.player {
+    background-color: #EEEEEE;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &__title {
+        width: 620px;
+        height: 32px;
+        font-weight: 400;
+        font-size: 24px;
+        letter-spacing: -0.4px;
+        color: #1B191C;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    &__container {
+        overflow: hidden;
+        margin-top: 20px;
+        padding: 20px;
+        width: 620px;
+        background: #CFD3D6;
+        position: relative; 
+    }
+
+    &__loader {
+        transform: translateX(-100%);
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 4px;
+        width: 300px;
+
+        &_animated {
+            background-color: #fff;
+            animation-name: loader;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    &__btn {
+        cursor: pointer;
+    }
+
+    &__progress {
+        margin-top: 50px;
+        width: 580px;
+
+        .MuiSlider-root {
+            padding: 0;
+            height: 2px;
+        }
+
+        .MuiSlider-thumb {
+            border-radius: 6px;
+            background-color: rgb(255, 255, 255);
+            height: 12px;
+            width: 16px;
+        }
+
+        .MuiSlider-track {
+            border-radius: 0;
+            color: #ADACAD;
+        }
+
+        .MuiSlider-rail {
+            border-radius: 0;
+            color: rgb(255, 255, 255);
+            opacity: 1;
+        }
+    }
+
+    &__footer {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__time {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #1B191C;
+        letter-spacing: -0.3px;
+    }
+
+    &__volume {
+        width: 252px;
+
+        .MuiSlider-root {
+            padding: 0;
+            height: 2px;
+        }
+
+        .MuiSlider-thumb {
+            border-radius: 0;
+            background-color: #000;
+            height: 12px;
+            width: 16px;
+        }
+
+        .MuiSlider-track {
+            border-radius: 0;
+            color: rgb(0, 0, 0);
+        }
+
+        .MuiSlider-rail {
+            border-radius: 0;
+            color: rgb(255, 255, 255);
+            opacity: 1;
+        }
+    }
+
+    &__back {
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: -0.4px;
+        color: #1B191C;
+        margin-top: 20px;
+
+        img {
+            margin-right: 8px;
+        }
+    }
+}
+
+@keyframes loader {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(230%);
+    }
+
+    100% {
+        transform: translateX(230%);
+    }
+}
