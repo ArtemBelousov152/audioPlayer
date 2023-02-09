@@ -106,6 +106,10 @@ export default function Player() {
     })
 
     const onProgressChange = (event, value) => {
+        if (duration === 0) {
+            return;
+        }
+
         setIsPlaying(false);
         setProgress(value);
 
@@ -130,6 +134,10 @@ export default function Player() {
     }
 
     const onProgressChangeCommitted = (event, value) => {
+        if (duration === 0) {
+            return;
+        }
+        
         setIsPlaying(true);
     }
 
@@ -139,7 +147,8 @@ export default function Player() {
                 id="music"
                 src={songLink}
                 ref={audioElem}
-                onTimeUpdate={onPlaying} />
+                onTimeUpdate={onPlaying} 
+                preload='metadata'/>
             <div className="player__wrapper">
                 <div className='player__title'>{songLink}</div>
                 <div className="player__container">
