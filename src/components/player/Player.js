@@ -105,6 +105,34 @@ export default function Player() {
         'player__loader_animated': loading
     })
 
+    const onProgressChange = (event, value) => {
+        setIsPlaying(false);
+        setProgress(value);
+
+        let newTime = duration * (value / 100);
+        let newMinutes = 0;
+        let newSeconds = 0;
+
+        audioElem.current.currentTime = newTime;
+
+        if (newTime > 60) {
+            while (newTime > 60) {
+                newMinutes += 1;
+                newTime -= 60;
+            }
+        }
+
+        newSeconds = timeFormat(Math.floor(newTime));
+        newMinutes = timeFormat(newMinutes);
+
+        setSeconds(newSeconds);
+        setMinutes(newMinutes);
+    }
+
+    const onProgressChangeCommitted = (event, value) => {
+        setIsPlaying(true);
+    }
+
     return (
         <div className="player">
             <audio
@@ -124,7 +152,9 @@ export default function Player() {
                     </div>
                     <div className="player__progress">
                         <Slider
-                            value={progress} />
+                            value={progress}
+                            onChange={onProgressChange}
+                            onChangeCommitted={onProgressChangeCommitted} />
                     </div>
                     <div className="player__footer">
                         <div className="player__time">
