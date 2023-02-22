@@ -8,10 +8,12 @@ import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
-  </Provider>
-);
+export default function reactStart() {
+  root.render(
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  );
+}
