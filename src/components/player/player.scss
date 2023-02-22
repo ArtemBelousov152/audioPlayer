@@ -56,8 +56,8 @@
     }
 
     &__progress {
-        margin-top: 50px;
-        width: 580px;
+        margin-left: 7px;
+        margin-top: 29px;
 
         .MuiSlider-root {
             padding: 0;
@@ -69,6 +69,17 @@
             background-color: rgb(255, 255, 255);
             height: 12px;
             width: 16px;
+
+            &:focus,
+            &:hover,
+            &.Mui-active,
+            &.Mui-focusVisible {
+                box-shadow: none;
+            }
+        }
+
+        .MuiSlider-dragging {
+            box-shadow: none;
         }
 
         .MuiSlider-track {
@@ -81,18 +92,21 @@
             color: rgb(255, 255, 255);
             opacity: 1;
         }
+
     }
 
     &__footer {
-        margin-top: 50px;
+        margin-top: 36px;
         display: flex;
         justify-content: space-between;
     }
 
     &__time {
+        position: relative;
+        right: 1px;
+        top: 9px;
         font-weight: 400;
         font-size: 12px;
-        line-height: 16px;
         color: #1B191C;
         letter-spacing: -0.3px;
     }
@@ -110,6 +124,13 @@
             background-color: #000;
             height: 12px;
             width: 16px;
+
+            &:focus,
+            &:hover,
+            &.Mui-active,
+            &.Mui-focusVisible {
+                box-shadow: none;
+            }
         }
 
         .MuiSlider-track {

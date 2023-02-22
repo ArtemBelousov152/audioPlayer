@@ -18,19 +18,25 @@ export default function Input() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     if (value.slice(0, 8) !== 'https://') {
+    //         setError(true);
+    //     } else {
+    //         setError(false);
+    //     }
+    // },[value]);
+
+    const setLink = () => {
         if (value.slice(0, 8) !== 'https://') {
             setError(true);
+            return;
         } else {
             setError(false);
         }
-    },[value]);
 
-    const setLink = () => {
-        if (!error) {
-            dispatch(addSong(value));
-            navigate('/player');
-        }
+        dispatch(addSong(value));
+        navigate('/player');
+
     }
 
     const inputClass = classNames({
