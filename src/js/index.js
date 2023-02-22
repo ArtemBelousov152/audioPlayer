@@ -1,3 +1,10 @@
 import reactStart from '../../react/src/index';
-console.log('hello')
-reactStart();
+import technicalSwitch from './modules/technialSwitch';
+
+import '../style/style.scss';
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    reactStart();
+    technicalSwitch();
+})

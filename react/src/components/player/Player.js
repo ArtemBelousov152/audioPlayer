@@ -33,22 +33,15 @@ export default function Player() {
     }
 
     useEffect(() => {
-        if (audioElem.current.networkState === 2) {
+        if (isPlaying === false && audioElem.current.networkState === 2) {
             setLoading(true);
-        } else {
+        }
+
+        if (isPlaying === true) {
             setLoading(false);
         }
 
-        const checkLoad = setInterval(() => {
-            if (audioElem.current.networkState === 2) {
-                setLoading(true);
-            } else {
-                setLoading(false);
-            }
-        }, 2000);
-
-        return () => clearInterval(checkLoad);
-    }, []);
+    }, [isPlaying]);
 
     useEffect(() => {
         audioElem.current.volume = volume / 100;
@@ -137,9 +130,15 @@ export default function Player() {
         if (duration === 0) {
             return;
         }
-        
+
         setIsPlaying(true);
     }
+
+    // const preventHorizontalKeyboardNavigation = (e) => {
+    //     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    //         e.preventDefault();
+    //       }
+    // }
 
     return (
         <div className="player">
@@ -147,10 +146,17 @@ export default function Player() {
                 id="music"
                 src={songLink}
                 ref={audioElem}
-                onTimeUpdate={onPlaying} 
-                preload='metadata'/>
+                onTimeUpdate={onPlaying}
+                preload='metadata' />
             <div className="player__wrapper">
-                <div className='player__title'>{songLink}</div>
+                <Link
+                    to={'/'}
+                    className="player__back"
+                    onClick={backToInput}
+                >
+                    <img src={smallArrow} alt="arrow" />
+                    Back
+                </Link>
                 <div className="player__container">
                     <div className={`player__loader ${loaderClass}`}></div>
                     <div className="player__btn">
@@ -163,7 +169,8 @@ export default function Player() {
                         <Slider
                             value={progress}
                             onChange={onProgressChange}
-                            onChangeCommitted={onProgressChangeCommitted} />
+                            onChangeCommitted={onProgressChangeCommitted}
+                        />
                     </div>
                     <div className="player__footer">
                         <div className="player__time">
@@ -178,14 +185,6 @@ export default function Player() {
                         </div>
                     </div>
                 </div>
-                <Link
-                    to={'/'}
-                    className="player__back"
-                    onClick={backToInput}
-                >
-                    <img src={smallArrow} alt="arrow" />
-                    Back
-                </Link>
             </div>
         </div>
     )

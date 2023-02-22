@@ -18,19 +18,25 @@ export default function Input() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     if (value.slice(0, 8) !== 'https://') {
+    //         setError(true);
+    //     } else {
+    //         setError(false);
+    //     }
+    // },[value]);
+
+    const setLink = () => {
         if (value.slice(0, 8) !== 'https://') {
             setError(true);
+            return;
         } else {
             setError(false);
         }
-    },[value]);
 
-    const setLink = () => {
-        if (!error) {
-            dispatch(addSong(value));
-            navigate('/player');
-        }
+        dispatch(addSong(value));
+        navigate('/player');
+
     }
 
     const inputClass = classNames({
@@ -56,7 +62,7 @@ export default function Input() {
                     </button>
                     {error ? <img className='input__error' src={warning} alt="warning" /> : null}
                 </div>
-                {error ? <div className="input__warning">Error message here</div> : null}
+                {error ? <div className="input__warning">Wrong link</div> : null}
             </div>
         </div>
     )
