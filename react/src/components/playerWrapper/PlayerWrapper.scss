@@ -25,3 +25,15 @@
         }
     }
 }
+
+@media(max-width: 576px) {
+    .playerWrapper {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &__back {
+            margin-top: 0;
+            width: 296px;
+        }
+    }
+}

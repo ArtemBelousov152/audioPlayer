@@ -159,3 +159,15 @@
         transform: translateX(230%);
     }
 }
+
+@media (max-width: 576px) {
+    .player {
+        &__container {
+            width: 296px;
+        }
+
+        &__volume {
+            width: 192px;
+        }
+    }
+}

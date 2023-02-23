@@ -65,3 +65,18 @@
         border: 0.5px solid #C6A827;
     }
 }
+
+@media (max-width: 576px) {
+    .input {
+        &__input {
+            width: 232px;
+            height: 64px;
+            padding: 16px;
+        }
+
+        &__btn {
+            width: 64px;
+            height: 64px;
+        }
+    }
+}

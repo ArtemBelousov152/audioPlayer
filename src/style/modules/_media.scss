@@ -1,11 +1,128 @@
 @media (max-width: 576px) {
+    .appPage {
+        width: 320px;
+        padding: 0;
+    }
+
+    .error {
+        top: 12px;
+        width: 296px;
+        height: 73px;
+    }
+
     .header {
-        &__desktop {
-            display: none;
+        &__wrapper {
+            padding: 20px 12px;
         }
 
-        &__mobile {
-            display: block;
+        &__content {
+            grid-template-columns: 296px;
+            grid-template-rows: repeat(4, auto);
+        }
+
+        &__title {
+            font-size: 36px;
+            letter-spacing: -0.4px;
+            line-height: 110%;
+        }
+
+        &__player {
+            margin-top: 40px;
+            grid-column-start: auto;
+            grid-row-start: auto;
+            grid-row-end: auto;
+        }
+
+        &__descr {
+            margin-top: 40px;
+        }
+
+        &__subtext {
+            margin-top: 12px;
+        }
+    }
+
+    .works {
+        padding: 40px 12px 0 12px;
+
+        &__grid {
+            grid-template-columns: 296px;
+        }
+
+        &__title {
+            font-size: 36px;
+            line-height: 110%;
+            letter-spacing: -0.4px;
+        }
+
+        &__yellow {
+            position: relative;
+            z-index: 10;
+            height: 49px;
+            width: 49px;
+        }
+
+        &__line {
+            top: 28px;
+            left: 6px;
+        }
+
+        &__icons {
+            height: 193px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &__block {
+            position: relative;
+            z-index: 10;
+            margin-bottom: 0;
+        }
+
+        &__block {
+            width: 60px;
+            height: 60px;
+
+            svg {
+                height: 28px;
+                width: 46px;
+            }
+        }
+    }
+
+    .tech {
+        padding: 120px 12px 40px 12px;
+        &__grid {
+            grid-template-columns: 296px;
+        }
+
+        &__server {
+           display: flex;
+           align-items: flex-end;
+           width: 125px;
+        }
+
+        &__amazon {
+            width: 100px;
+        }
+
+        &__item {
+            padding-top: 0;
+            width: auto;
+            letter-spacing: -0.4px;
+            span {
+                margin-top: 10px;
+                position: static;
+            }
+
+            &:nth-child(3) {
+                grid-row-start: 2;
+            }
+
+            &:nth-child(5) {
+                grid-row-start: 3;
+            }
         }
     }
 }
