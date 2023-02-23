@@ -35,11 +35,7 @@ export default function Player() {
     useEffect(() => {
         if (isPlaying === false && audioElem.current.networkState === 2) {
             setLoading(true);
-<<<<<<< HEAD:src/components/player/Player.js
-        } 
-=======
         }
->>>>>>> v2:react/src/components/player/Player.js
 
         if (isPlaying === true) {
             setLoading(false);
@@ -180,11 +176,7 @@ export default function Player() {
                             value={progress}
                             onChange={onProgressChange}
                             onChangeCommitted={onProgressChangeCommitted}
-<<<<<<< HEAD:src/components/player/Player.js
-                             />
-=======
                         />
->>>>>>> v2:react/src/components/player/Player.js
                     </div>
                     <div className="player__footer">
                         <div className="player__time">

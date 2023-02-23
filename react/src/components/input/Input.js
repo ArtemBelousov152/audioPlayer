@@ -26,15 +26,12 @@ export default function Input() {
     //     }
     // },[value]);
 
-<<<<<<< HEAD:src/components/input/Input.js
-=======
     useEffect(() => {
         if (error) {
             document.querySelector('.error').classList.add('error_active');
         }
     },[error])
 
->>>>>>> v2:react/src/components/input/Input.js
     const setLink = () => {
         if (value.slice(0, 8) !== 'https://') {
             setError(true);
