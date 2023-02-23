@@ -2,6 +2,10 @@
     min-height: 490px;
     position: relative;
 
+    &__mobile {
+        display: none;
+    }
+
     &__wrapper {
         background-color: #EEEEEE;
         height: 100%;
@@ -11,6 +15,12 @@
 
     &__content {
         width: 492px;
+        min-height: 410px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &_wrapper {}
     }
 
     &__flex {
@@ -41,7 +51,6 @@
         line-height: 16px;
         letter-spacing: -0.3px;
         color: #1B191C;
-        margin-top: 400px;
 
         span {
             font-weight: 400;
