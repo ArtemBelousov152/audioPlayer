@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { playerSlice } from '../../store/reducers/playerSlice';
+import { useSelector} from 'react-redux';
+// import { Link } from 'react-router-dom';
+// import { playerSlice } from '../../store/reducers/playerSlice';
 import { timeFormat } from '../../utils/timeFormat';
 import Slider from '@mui/material/Slider';
 import classNames from 'classnames';
 
 import play from '../../assets/play.svg';
 import pause from '../../assets/pause.svg';
-import smallArrow from '../../assets/smallArrow.svg';
+// import smallArrow from '../../assets/smallArrow.svg';
 
 import './player.scss';
 
@@ -23,8 +23,8 @@ export default function Player() {
     const [loading, setLoading] = useState(false);
 
     const { songLink } = useSelector(state => state);
-    const dispatch = useDispatch();
-    const { clearLink } = playerSlice.actions;
+    // const dispatch = useDispatch();
+    // const { clearLink } = playerSlice.actions;
 
     const audioElem = useRef();
 
@@ -35,7 +35,11 @@ export default function Player() {
     useEffect(() => {
         if (isPlaying === false && audioElem.current.networkState === 2) {
             setLoading(true);
+<<<<<<< HEAD:src/components/player/Player.js
         } 
+=======
+        }
+>>>>>>> v2:react/src/components/player/Player.js
 
         if (isPlaying === true) {
             setLoading(false);
@@ -90,9 +94,9 @@ export default function Player() {
         setVolume(value);
     }
 
-    const backToInput = () => {
-        dispatch(clearLink());
-    }
+    // const backToInput = () => {
+    //     dispatch(clearLink());
+    // }
 
     const loaderClass = classNames({
         'player__loader_animated': loading
@@ -130,10 +134,16 @@ export default function Player() {
         if (duration === 0) {
             return;
         }
-        
+
         setIsPlaying(true);
     }
     
+    // const preventHorizontalKeyboardNavigation = (e) => {
+    //     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    //         e.preventDefault();
+    //       }
+    // }
+
     // const preventHorizontalKeyboardNavigation = (e) => {
     //     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
     //         e.preventDefault();
@@ -146,10 +156,17 @@ export default function Player() {
                 id="music"
                 src={songLink}
                 ref={audioElem}
-                onTimeUpdate={onPlaying} 
-                preload='metadata'/>
+                onTimeUpdate={onPlaying}
+                preload='metadata' />
             <div className="player__wrapper">
-                <div className='player__title'>{songLink}</div>
+                {/* <Link
+                    to={'/'}
+                    className="player__back"
+                    onClick={backToInput}
+                >
+                    <img src={smallArrow} alt="arrow" />
+                    Back
+                </Link> */}
                 <div className="player__container">
                     <div className={`player__loader ${loaderClass}`}></div>
                     <div className="player__btn">
@@ -163,7 +180,11 @@ export default function Player() {
                             value={progress}
                             onChange={onProgressChange}
                             onChangeCommitted={onProgressChangeCommitted}
+<<<<<<< HEAD:src/components/player/Player.js
                              />
+=======
+                        />
+>>>>>>> v2:react/src/components/player/Player.js
                     </div>
                     <div className="player__footer">
                         <div className="player__time">
@@ -178,14 +199,6 @@ export default function Player() {
                         </div>
                     </div>
                 </div>
-                <Link
-                    to={'/'}
-                    className="player__back"
-                    onClick={backToInput}
-                >
-                    <img src={smallArrow} alt="arrow" />
-                    Back
-                </Link>
             </div>
         </div>
     )

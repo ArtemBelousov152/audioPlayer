@@ -1,0 +1,49 @@
+.error {
+    position: fixed;
+    left: 50%;
+    top: 20px;
+    padding-left: 20px;
+    width: 618px;
+    height: 73px;
+    background: #FFFFFF;
+    border: 0.5px solid #E6E6E6;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    color: #1B191C;
+    transform: translateY(-200%) translateX(-50%);
+    transition: all, .6s;
+
+    &_active {
+        transform: translateY(0) translateX(-50%);
+    }
+
+    &__warning {
+        height: 32px;
+        width: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #F8D231;
+        ;
+    }
+
+    &__message {
+        margin-left: 12px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: -0.3px;
+
+        span {
+            font-weight: 300;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        cursor: pointer;
+        top: 20px;
+        right: 20px;
+    }
+}

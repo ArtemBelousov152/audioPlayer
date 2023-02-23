@@ -1,5 +1,6 @@
 import Input from '../input/Input';
-import Player from '../player/Player';
+// import Player from '../player/Player';
+import PlayerWrapper from '../playerWrapper/PlayerWrapper';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import './App.scss';
@@ -13,7 +14,7 @@ function App() {
         },
         {
             path: '/player',
-            element: <Player/>
+            element: <PlayerWrapper/>
         }
     ])
 
