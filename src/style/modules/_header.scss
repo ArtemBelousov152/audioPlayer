@@ -1,5 +1,5 @@
 .header {
-    height: 490px;
+    min-height: 490px;
     position: relative;
 
     &__wrapper {
@@ -41,7 +41,7 @@
         line-height: 16px;
         letter-spacing: -0.3px;
         color: #1B191C;
-        margin-top: 182px;
+        margin-top: 400px;
 
         span {
             font-weight: 400;

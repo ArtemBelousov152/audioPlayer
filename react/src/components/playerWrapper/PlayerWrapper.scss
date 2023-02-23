@@ -1,0 +1,27 @@
+.playerWrapper {
+    background-color: #EEEEEE;
+    margin-bottom: 80px;
+    margin-top: 60px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__back {
+        width: 620px;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: -0.4px;
+        color: #1B191C;
+        margin-top: 20px;
+
+        img {
+            margin-right: 8px;
+        }
+    }
+}
