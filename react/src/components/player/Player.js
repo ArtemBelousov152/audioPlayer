@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector} from 'react-redux';
-// import { Link } from 'react-router-dom';
-// import { playerSlice } from '../../store/reducers/playerSlice';
 import { timeFormat } from '../../utils/timeFormat';
 import Slider from '@mui/material/Slider';
 import classNames from 'classnames';
 
 import play from '../../assets/play.svg';
 import pause from '../../assets/pause.svg';
-// import smallArrow from '../../assets/smallArrow.svg';
 
 import './player.scss';
 
@@ -90,10 +87,6 @@ export default function Player() {
         setVolume(value);
     }
 
-    // const backToInput = () => {
-    //     dispatch(clearLink());
-    // }
-
     const loaderClass = classNames({
         'player__loader_animated': loading
     })
@@ -155,14 +148,6 @@ export default function Player() {
                 onTimeUpdate={onPlaying}
                 preload='metadata' />
             <div className="player__wrapper">
-                {/* <Link
-                    to={'/'}
-                    className="player__back"
-                    onClick={backToInput}
-                >
-                    <img src={smallArrow} alt="arrow" />
-                    Back
-                </Link> */}
                 <div className="player__container">
                     <div className={`player__loader ${loaderClass}`}></div>
                     <div className="player__btn">

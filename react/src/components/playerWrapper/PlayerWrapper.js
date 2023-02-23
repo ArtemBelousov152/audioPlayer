@@ -29,8 +29,8 @@ export default function PlayerWrapper() {
                 <img src={smallArrow} alt="arrow" />
                 Back
             </Link>
-            <Player/>
-            <Player/>
+            <Player setPlay={setPlayerOnePlay}/>
+            <Player setPlay={setPlayerTwoPlay}/>
         </div>
     )
 }
