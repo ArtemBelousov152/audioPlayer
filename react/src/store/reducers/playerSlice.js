@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    songLink: ''
+    songLink: '',
+    history: []
 }
 
 export const playerSlice = createSlice({
@@ -13,6 +14,9 @@ export const playerSlice = createSlice({
         },
         clearLink(state) {
             state.songLink = '';
+        },
+        addLinkOnHistory(state, action) {
+            state.history.push(action.payload);
         }
     }
 })

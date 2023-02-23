@@ -1,0 +1,52 @@
+.history {
+    width: 524px;
+    list-style-type: none;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.4px;
+    color: #A4A3A4;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    &__item {
+        height: 48px;
+        padding: 8px 8px 12px 8px;
+        background-color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &:hover {
+            color: #CBCBCB;
+        }
+
+        &:active {
+            color: #A4A3A4;
+        }
+
+        &::before {
+            content: '';
+            width: 508px;
+            height: 1px;
+            display: block;
+            position: absolute;
+            left: 8px;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        &:nth-last-child(1) {
+            &::before {
+                content: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .history {
+        width: 232px;
+    }
+}
