@@ -52,7 +52,7 @@ export default function Input() {
                         placeholder='https://'
                         type="text"
                         value={value}
-                        onChange={(e) => setValue(e.target.value)} />
+                        onChange={(e) => setValue(e.target.value.toLowerCase())} />
                     <button
                         to={'/player'}
                         className='input__btn'
