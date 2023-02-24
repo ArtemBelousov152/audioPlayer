@@ -20,7 +20,7 @@ export default function Input() {
 
     const setLink = () => {
         if (value.slice(0, 8) !== 'https://') {
-            // document.querySelector('.error').classList.add('error_active');
+            document.querySelector('.error').classList.add('error_active');
             setError(true);
             return;
         } else {
@@ -29,7 +29,7 @@ export default function Input() {
 
         dispatch(addSong(value));
 
-        // document.querySelector('.error').classList.remove('error_active');
+        document.querySelector('.error').classList.remove('error_active');
 
         if (!history.includes(value)) {
             dispatch(addLinkOnHistory(value));
