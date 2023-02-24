@@ -52,6 +52,7 @@
     }
 
     &__btn {
+        width: 40px;
         cursor: pointer;
     }
 
@@ -74,6 +75,10 @@
             &:hover,
             &.Mui-active,
             &.Mui-focusVisible {
+                box-shadow: none;
+            }
+
+            &::before {
                 box-shadow: none;
             }
         }
@@ -131,6 +136,10 @@
             &.Mui-focusVisible {
                 box-shadow: none;
             }
+
+            &::before {
+                box-shadow: none;
+            }
         }
 
         .MuiSlider-track {
@@ -172,5 +181,26 @@
 
     100% {
         transform: translateX(230%);
+    }
+}
+
+@media (max-width: 768px) {
+    .player {
+        &__title {
+            width: 310px;
+        }
+
+        &__container {
+            margin-top: 12px;
+            width: 310px;
+        }
+
+        &__volume {
+            width: 160px;
+        }
+
+        &__back {
+            margin-top: 12px;
+        }
     }
 }

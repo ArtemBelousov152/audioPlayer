@@ -33,12 +33,29 @@ export default function Player() {
     }
 
     useEffect(() => {
+        let checkLoading;
         if (isPlaying === false && audioElem.current.networkState === 2) {
             setLoading(true);
-        } 
+
+            checkLoading = setInterval(() => {
+                if (audioElem.current.networkState === 2) {
+                    return;
+                }
+
+                if (audioElem.current.networkState !== 2) {
+                    setLoading(false);
+                    clearTimeout(checkLoading);
+                }
+            }, 100)
+        }
 
         if (isPlaying === true) {
+            clearTimeout(checkLoading);
             setLoading(false);
+        }
+
+        return () => {
+            clearTimeout(checkLoading);
         }
 
     }, [isPlaying]);
@@ -133,12 +150,6 @@ export default function Player() {
         
         setIsPlaying(true);
     }
-    
-    // const preventHorizontalKeyboardNavigation = (e) => {
-    //     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-    //         e.preventDefault();
-    //       }
-    // }
 
     return (
         <div className="player">

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { playerSlice } from '../../store/reducers/playerSlice';
 import classNames from 'classnames';
@@ -17,14 +17,6 @@ export default function Input() {
     const { addSong } = playerSlice.actions;
 
     const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (value.slice(0, 8) !== 'https://') {
-    //         setError(true);
-    //     } else {
-    //         setError(false);
-    //     }
-    // },[value]);
 
     const setLink = () => {
         if (value.slice(0, 8) !== 'https://') {
@@ -62,7 +54,7 @@ export default function Input() {
                     </button>
                     {error ? <img className='input__error' src={warning} alt="warning" /> : null}
                 </div>
-                {error ? <div className="input__warning">Error message here</div> : null}
+                {error ? <div className="input__warning">Wrong link</div> : null}
             </div>
         </div>
     )
