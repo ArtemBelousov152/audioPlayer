@@ -13,9 +13,8 @@ export default function Input() {
     const [error, setError] = useState(false);
 
     const dispatch = useDispatch();
-    const { addSong, addLinkOnHistory } = playerSlice.actions;
+    const { addSong, addLinkOnHistory, setActivePlayer } = playerSlice.actions;
     const { history } = useSelector(state => state)
-
 
     const navigate = useNavigate();
 
@@ -61,7 +60,11 @@ export default function Input() {
                         <img src={arrow} alt="arrow" />
                     </button>
                 </div>
-                <History setValueFromHistory={setValueFromHistory} />
+                <History
+                    setValueFromHistory={setValueFromHistory}
+                    value={value} 
+                    className="input__history"
+                    history={history}/>
             </div>
         </div>
     )

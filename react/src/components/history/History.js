@@ -1,20 +1,29 @@
-import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 import './hisroty.scss';
 
-export default function History({ setValueFromHistory }) {
+export default function History({ setValueFromHistory, value, className, history }) {
 
-    const { history } = useSelector(state => state)
+    const filteredHistory = value === '' ? history :
+        history.filter(elem => {
+            return elem.includes(value);
+        })
 
-    if (history.length === 0) {
+    if (filteredHistory.length === 0) {
         return null
     }
 
+    const bottomMultiplier = filteredHistory.length >= 4 ? 4 : filteredHistory.length;
+
     return (
-        <ul className="history">
+        <ul
+            className={`history ${className}`}
+            style={{ bottom: `${-48 * bottomMultiplier}px` }}>
             {
-                history.map(elem => {
+                filteredHistory.map((elem, index) => {
+                    if (index >= 4) {
+                        return;
+                    }
                     return (
                         <li
                             key={uuidv4()}

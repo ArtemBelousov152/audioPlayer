@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { timeFormat } from '../../utils/timeFormat';
 import Slider from '@mui/material/Slider';
 import classNames from 'classnames';
+import { playerSlice } from '../../store/reducers/playerSlice';
 
 import play from '../../assets/play.svg';
 import pause from '../../assets/pause.svg';
 
 import './player.scss';
 
-export default function Player() {
+export default function Player({ playerNumber }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [songTime, setSongTime] = useState(0);
     const [seconds, setSeconds] = useState('00');
@@ -18,24 +19,44 @@ export default function Player() {
     const [duration, setDuration] = useState(0);
     const [progress, setProgress] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [firstLoad, setFirstLoad] = useState(true);
 
-    const { songLink } = useSelector(state => state);
-    // const dispatch = useDispatch();
-    // const { clearLink } = playerSlice.actions;
+    const { songLink, activePlayer } = useSelector(state => state);
+    const dispatch = useDispatch();
+    const { setActivePlayer } = playerSlice.actions;
 
     const audioElem = useRef();
 
     const playPause = () => {
+        dispatch(setActivePlayer(playerNumber));
+
         setIsPlaying(isPlaying => !isPlaying);
     }
 
     useEffect(() => {
+        let checkLoading;
         if (isPlaying === false && audioElem.current.networkState === 2) {
             setLoading(true);
+
+            checkLoading = setInterval(() => {
+                if (audioElem.current.networkState === 2) {
+                    return;
+                }
+
+                if (audioElem.current.networkState !== 2) {
+                    setLoading(false);
+                    clearTimeout(checkLoading);
+                }
+            }, 100)
         }
 
         if (isPlaying === true) {
+            clearTimeout(checkLoading);
             setLoading(false);
+        }
+
+        return () => {
+            clearTimeout(checkLoading);
         }
 
     }, [isPlaying]);
@@ -45,7 +66,22 @@ export default function Player() {
     }, [volume]);
 
     useEffect(() => {
-        if (isPlaying) {
+        if (firstLoad) {
+            setFirstLoad(false);
+            return;
+        }
+
+        if (activePlayer === playerNumber) {
+            setIsPlaying(true);
+        }
+
+        if (activePlayer !== playerNumber) {
+            setIsPlaying(false);
+        }
+    }, [activePlayer])
+
+    useEffect(() => {
+        if (isPlaying && activePlayer === playerNumber) {
             audioElem.current.play();
         } else {
             audioElem.current.pause();
@@ -61,7 +97,6 @@ export default function Player() {
         } else if (time === Infinity) {
             setProgress(100);
         }
-
 
         if (ct !== songTime) {
             setSongTime(ct);
@@ -126,18 +161,6 @@ export default function Player() {
 
         setIsPlaying(true);
     }
-    
-    // const preventHorizontalKeyboardNavigation = (e) => {
-    //     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-    //         e.preventDefault();
-    //       }
-    // }
-
-    // const preventHorizontalKeyboardNavigation = (e) => {
-    //     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-    //         e.preventDefault();
-    //       }
-    // }
 
     return (
         <div className="player">
