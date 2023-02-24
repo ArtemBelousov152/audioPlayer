@@ -32,7 +32,6 @@ export default function History({ setValueFromHistory, value, className, history
                             {elem}
                         </li>
                     )
-
                 })
             }
         </ul>

@@ -1,5 +1,4 @@
 import Input from '../input/Input';
-// import Player from '../player/Player';
 import PlayerWrapper from '../playerWrapper/PlayerWrapper';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
